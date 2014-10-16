@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/metro-bootstrap.css">
+		<link rel="stylesheet" href="css/metro-bootstrap-responsive.css">
+		<link rel="stylesheet" href="css/iconFont.css">
+		<link rel="stylesheet" href="js/prettify/prettify.css">
+
+        <script src="js/jquery/jquery.min.js"></script>
+        <script src="js/jquery/jquery.widget.min.js"></script>
+        <script src="js/jquery/jquery.mousewheel.js"></script>
+		<script src="js/prettify/prettify.js"></script>
+        <script src="js/metro/metro.min.js"></script>
+		
+		<script src="js/docs.js"></script>
+		<script src="js/github.info.js"></script>
+	
+		<title>Рисование с использованием SVG-элементов</title>
+	</head>
+	<body class="metro">
+		<div class="container">
+			<div align="center">
+		<h1>Рисование с использованием SVG-элементов</h1>
+	</div>
+	<br/>
+	<p>Мы знакомы с основной структурой SVG-изображения и его элементов. Как нам теперь начать генерировать фигуры из наших данных?</p>
+	<p>Вы, наверное, заметили, что все свойства SVG-элементов задаются в виде атрибутов. Это значит, что они включены внутрь тега элемента в виде  ключ/значение, например:</p>
+	<pre class="prettyprint linenums">&lt;element property="value"/&gt;</pre>
+	<p>Хммм, уж больно сильно напоминает HTML:</p>
+	<pre class="prettyprint linenums">&lt;p class="eureka"/&gt;</pre>
+	<p>Мы уже использовали удобные методы append() и attr() из библиотеки D3 для создания новых HTML элементов и установки их атрибутов. Поскольку SVG-элементы являются частью DOM, так же как и HTML-элементы, мы можем использовать append() и attr() точно так же для создания SVG-изображений!</p>
+	<br/>
+	<h3>Создаем SVG</h3>
+	<p>Первоначально, нам надо создать SVG-элемент, в который мы будем включать все наши фигуры.</p>
+	<pre class="prettyprint linenums">d3.select("body").append("svg");</pre>
+	<p>Этим кодом мы ищем элемент body и добавляем в него элемент SVG перед закрывающимся тегом </body>. Я рекомендую сделать так:</p>
+	<pre class="prettyprint linenums">var svg = d3.select("body").append("svg");</pre>
+	<p>Помните, сколько методов D3 возвращают ссылку на DOM-элементы, с которыми они работают? Путем создания переменной svg, мы можем запомнить ссылку, возвращенную методом append(). Считайте svg не просто "переменной", а "указателем на SVG-объект, который мы только что создали". Эта ссылка сохранит нам много кода далее. Вместо того, чтобы искать каждый раз элемент SVG кодом d3.select("svg"), мы просто используем ссылку svg.</p>
+	<pre class="prettyprint linenums">
+svg.attr("width", 500)
+	.attr("height", 50);</pre>
+	<p>Иначе, все могло бы быть записано в одной строке кода:</p>
+	<pre class="prettyprint linenums">
+var svg = d3.select("body")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 50);</pre>
+	<p>Посмотрите <a href="http://alignedleft.com/content/03-tutorials/01-d3/110-drawing-svgs/1.html">демо-страницу с этим кодом</a>. Проинспектируйте DOM, и убедитесь, что пустой SVG-элемент в нее включен.</p>
+	<p>Чтобы упростить вам жизнь, я рекомендую поместить в переменные значения width и height в начало вашего кода, как <a href="http://alignedleft.com/content/03-tutorials/01-d3/110-drawing-svgs/2.html">здесь</a>.</p>
+	<pre class="prettyprint linenums">
+//Width and height
+var w = 500;
+var h = 50;</pre>
+	<p>Я это буду проделывать всегда с последующими примерами. Теперь я могу получить эти значения, попросту обратившись к переменным:</p>
+	<pre class="prettyprint linenums">
+var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)   // <-- Here
+            .attr("height", h); // <-- and here!</pre>
+	<br/>
+	<h3>Фигуры на основе данных</h3>
+	<p>Пришло время добавить несколько фигур. Я буду использовать наш первоначальный набор данных:</p>
+	<pre class="prettyprint linenums">var dataset = [ 5, 10, 15, 20, 25 ];</pre>
+	<p>а потом буду использовать метод data(), чтобы пройтись по каждому значению в нашем наборе, при этом создавая круг.</p>
+	<pre class="prettyprint linenums">
+svg.selectAll("circle")
+    .data(dataset)
+    .enter()
+    .append("circle");</pre>
+	<p>Запомните, что selectAll() вернет пустые ссылки на все круги(которые пока не существуют), data() привязывает значения к элементам, которые мы хотим создать, enter() возвращает ссылки на шаблоны новых элементов, а метод append() в конце-концов добавляет круги в DOM.</p>
+	<p>Чтобы в последующем нам было проще ссылаться на созданные круги, мы создадим переменную, и в ней будем хранить ссылки на новые элементы:</p>
+	<pre class="prettyprint linenums">
+var circles = svg.selectAll("circle")
+                 .data(dataset)
+                 .enter()
+                 .append("circle");</pre>
+	<p>Великолепно, но всем этим кругам надо задать позицию и размер. Будьте осторожны, следующий код может взорвать ваш мозг:</p>
+	<pre class="prettyprint linenums">
+circles.attr("cx", function(d, i) {
+            return (i * 50) + 25;
+        })
+       .attr("cy", h/2)
+       .attr("r", function(d) {
+            return d;
+       });</pre>
+	<img src="images/drawing_svgs_1.png" alt="Результат работы кода">
+	<p>Насладитесь результатом на <a href="http://alignedleft.com/content/03-tutorials/01-d3/110-drawing-svgs/3.html">демо-странице</a>. Давайте по шагам разберем код:</p>
+	<pre class="prettyprint linenums">
+circles.attr("cx", function(d, i) {
+            return (i * 50) + 25;
+        })</pre>
+	<p>Берем ссылку на все круги и устанавливаем атрибут cx каждому. Наши значения уже привязаны к элементам кругов, поэтому для каждого круга значение d соответствует необходимому значению в нашем первоначальном наборе данных(5, 10, 15, 20 и 25). Второе значение, i, также автоматически заполняется для нас. i хранит номер позиции(в наборе данных) текущего значения, соответствующего данному элементу. Номера позиций считаются с нуля, поэтому для нашего первого круга i == 0, для второго i == 1 и так далее. Мы используем i, чтобы  вставлять круги справа, потому что в каждом последующем цикле значение i увеличивается.</p>
+	<pre class="prettyprint linenums">
+(0 * 50) + 25 returns 25
+(1 * 50) + 25 returns 75
+(2 * 50) + 25 returns 125
+(3 * 50) + 25 returns 175
+(4 * 50) + 25 returns 225</pre>
+	<p>Чтобы убедиться в том, что переменная i доступна внутри вашей функции, вы должны включить переменную в определение функции в качестве аргумента(function(d, i)). Также вы должны включить d, даже если вы не используете d в вашей функции(как в случае выше).</p>
+	<p>На следующей строке:</p>
+	<pre class="prettyprint linenums">.attr("cy", h/2)</pre>
+	<p>h - это высота всего SVG-элемент, поэтому h/2 - это половина его высоты. Это сделано для того, чтобы круги были расположены в центре SVG-элемента по вертикали.</p>
+	<pre class="prettyprint linenums">
+.attr("r", function(d) {
+    return d;
+});</pre>
+	<p>И в конце задается радиус круга, который соответствует значению d, которое в свою очередь является значением нашего набора данных, соответствующее кругу.</p>
+	<br/>
+	<h3>Приятные цвета</h3>
+	<p>Цветовая закраска и рамка это всего лишь другие атрибуты, которые вы можете установить, используя те же методы. Просто, добавив этот код:</p>
+	<pre class="prettyprint linenums">
+.attr("fill", "yellow")
+.attr("stroke", "orange")
+.attr("stroke-width", function(d) {
+    return d/2;
+});</pre>
+	<p>мы получим следующий результат:</p>
+	<img src="images/drawing_svgs_2.png" alt="Результат работы кода">
+	<p>Конечно, вы можете перемешивать и сопоставлять атрибуты и функции для применения некоторой комбинации свойств. Трюки с визуализацией данных, конечно, должны выбирать соответствующие сопоставления с данными, поэтому визуальное представление ваших данных является понятным и полезным для зрителей.</p>
+		</div>
+	</body>
+</html>

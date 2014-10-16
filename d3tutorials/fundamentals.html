@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/metro-bootstrap.css">
+		<link rel="stylesheet" href="css/metro-bootstrap-responsive.css">
+		<link rel="stylesheet" href="css/iconFont.css">
+		<link rel="stylesheet" href="js/prettify/prettify.css">
+
+        <script src="js/jquery/jquery.min.js"></script>
+        <script src="js/jquery/jquery.widget.min.js"></script>
+        <script src="js/jquery/jquery.mousewheel.js"></script>
+		<script src="js/prettify/prettify.js"></script>
+        <script src="js/metro/metro.min.js"></script>
+		
+		<script src="js/docs.js"></script>
+		<script src="js/github.info.js"></script>
+	
+		<title>Основы</title>
+	</head>
+	<body class="metro">
+		<div class="container">
+			<div align="center">
+		<h1>Основы</h1>
+	</div>
+	<br/>
+	Работа с D3 требует понимания следующих понятий:
+	<br/>
+	<h3>HTML(Hyper Text Markup Language)</h3>
+	<p>Язык гипертекстовой разметки используется для структурирования содержимого для веб-браузеров. Простейшая HTML-страница выглядит примерно так:</p>
+	<pre class="prettyprint linenums">
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;title&gt;Page Title&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;Page Title&lt;/h1&gt;
+		&lt;p&gt;This is a really interesting paragraph.&lt;/p&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+	</pre>
+	<br/>
+	<h3>DOM(Document Object Model)</h3>
+	<p>Объектная модель документа относится к иерархической структуре HTML. Каждый тег, заключенный в квадратные скобки <i><></i>, называется элементом, и мы обращаемся к отношениям, существующим относительно элементов друг к другу в человеческом плане: родитель, ребенок, брат/сестра, предок и потомок. В коде HTML, расположенном выше, элемент <i><body></i> является родительским для двух своих потомков: <i>h1</i> и <i>p</i>(которые приходятся братьями друг другу). Все элементы, расположенные на странице, являются потомками элемента <i>html</i>.</p>
+	<p>Веб-браузеры разбирают DOM для того, чтобы сверстать страницу c содержимым.</p>
+	
+	<h3>CSS(Cascading Style Sheets)</h3>
+	<p>Каскадные таблицы стилей используются для стилизации отображения HTML-страниц. Простая CSS таблица стилей выглядит похожей на приведенный ниже пример:</p>
+	<pre class="prettyprint linenums">
+body {
+	background-color: white;
+	color: black;
+}
+	</pre>
+	<p>Стили CSS состоят из селекторов и правил. Селекторы определяют набор элементов, к которым будут применены описанные стили:</p>
+	<pre class="prettyprint linenums">
+h1          /* Selects level 1 headings              */
+p           /* Selects paragraphs                    */
+.caption    /* Selects elements with class "caption" */
+#subnav     /* Selects element with ID "subnav"      */
+	</pre>
+	<p>Правила - это свойства, которые в совокупности формируют стили:</p>
+	<pre class="prettyprint linenums">
+color: pink;
+background-color: yellow;
+margin: 10px;
+padding: 25px;
+	</pre>
+	<p>Мы объединяем селекторы и правила, используя фигурные скобки:</p>
+	<pre class="prettyprint linenums">
+p {
+    font-size: 12px;
+    line-height: 14px;
+    color: black;
+}
+	</pre>
+	<p>D3 использует селекторы CSS для определения элементов, с которыми будет происходить дальнейшая работа. Поэтому необходимо понимать, как их использовать.</p>
+	<p>Правила CSS могут быть включены непосредственно в элемент head страницы, например:</p>
+	<pre class="prettyprint linenums">
+&lt;head&gt;
+    &lt;style type="text/css"&gt;
+        p {
+            font-family: sans-serif;
+            color: lime;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+	</pre>
+	<p>или сохранены во внешний файл с расширением .css, а потом подключены к странице в элементе head:</p>
+	<pre class="prettyprint linenums">
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+	</pre>
+	<br/>
+	<h3>JavaScript</h3>
+	<p>JavaScript является динамическим языком сценариев, который может заставлять браузер делать изменения на странице, когда она уже загружена. Сценарии могут быть помещены напрямую в html-страницу между тегами script. Например:</p>
+	<pre class="prettyprint linenums">
+&lt;body&gt;
+    &lt;script type="text/javascript"&gt;
+        alert("Hello, world!");
+    &lt;/script&gt;
+&lt;/body&gt;
+	</pre>
+	<p>или храниться в отдельном файле, а потом подключены к страницу к каком-нибудь ее месте(чаще всего это происходит внутри тега head):</p>
+	<pre class="prettyprint linenums">
+&lt;head&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;script type="text/javascript" src="myscript.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+	</pre>
+	<br/>
+	<h3>Инструменты разработчика</h3>
+	<p>Надо быть знакомым с инструментами разработчика браузера, которым вы пользуетесь. В браузере на основе движка WebKit(например, Safari или Chrome), можно открыть веб-инспектор, который выглядит подобно картинке снизу:</p>
+	<img src="images/fundamentals_chrome_dev_tools.jpg" alt="Инструменты разработчика в браузере Chrome"> 
+	<p>В то время как "View Source" показывает вам исходный код HTML-страницы, веб-инспектор показывает вам текущее состояние DOM. Это очень полезно, потому что ваш код будет динамически изменять DOM элементы. В веб-инспекторе можно видеть, как меняются элементы. Так же вы будете пользоваться JavaScript-консолью для отладки.</p>
+	<br/>
+	<h3>SVG(Scalable Vector Graphics)</h3>
+	<p>D3 лучше всех, когда отрисовывает образы с использованием масштабируемой векторной графики.SVG - это формат изображений, который задается текстовым описанием. Это означает, что можно указать, как SVG изображение должно выглядеть путем написания кода простым языком разметки, наподобие HTML. В сущности, SVG-код может быть включен напрямую в HTML-код страницы.</p>
+	<p>Веб-браузеры поддерживают формат SVG в течении многих лет(за исключением <a href="http://caniuse.com/#feat=svg">Internet Explorer</a>), но он до сих пор не совсем прижился.</p>
+	<p>Небольшой круг можно нарисовать, используя следующий код:</p>
+	<svg width="50" height="50">
+		<circle cx="25" cy="25" r="22" fill="blue" stroke="gray" stroke-width="2"/>
+	</svg>
+	<pre class="prettyprint linenums">
+&lt;svg width="50" height="50"&gt;
+    &lt;circle cx="25" cy="25" r="22" fill="blue" stroke="gray" stroke-width="2"/&gt;
+&lt;/svg&gt;
+	</pre>
+	<p>Идем далее. Если нажать на круг правой кнопкой мыши, то мы не увидим привычной надписи "Сохранить изображение", ведь это не изображение! Увеличьте масштаб в вашем браузере, и вы увидите, круг увеличивается, а размытость круга уменьшается - эффект, присущий векторной графике.</p>
+	<p>Вы не обязаны использовать SVG в D3, но вскоре вы увидите, что SVG предоставляет спектр визуальных возможностей, который нельзя воспроизвести, используя обычные HTML-элементы.</p>
+		</div>
+	</body>
+</html>

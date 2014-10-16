@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/metro-bootstrap.css">
+		<link rel="stylesheet" href="css/metro-bootstrap-responsive.css">
+		<link rel="stylesheet" href="css/iconFont.css">
+		<link rel="stylesheet" href="js/prettify/prettify.css">
+
+        <script src="js/jquery/jquery.min.js"></script>
+        <script src="js/jquery/jquery.widget.min.js"></script>
+        <script src="js/jquery/jquery.mousewheel.js"></script>
+		<script src="js/prettify/prettify.js"></script>
+        <script src="js/metro/metro.min.js"></script>
+		
+		<script src="js/docs.js"></script>
+		<script src="js/github.info.js"></script>
+	
+		<title>Добавление элементов</title>
+	</head>
+	<body class="metro">
+		<div class="container">
+			<div align="center">
+		<h1>Добавление элементов</h1>
+	</div>
+	<br/>
+	<p>Один из ваших первых шагов будет использование D3 для создания нового DOM-элемента. Обычно, это будет SVG-объект для отрисовки визуализации данных, но мы начнем с самого простого, и просто создадим элемент p.</p>
+	<p>Начинаем с простого HTML-шаблона страницы:</p>
+	<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;D3 Test&lt;/title&gt;
+        &lt;script type="text/javascript" src="d3/d3.v3.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script type="text/javascript"&gt;
+            // Your beautiful D3 code will go here
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+	<p><a href="http://alignedleft.com/content/03-tutorials/01-d3/40-adding-elements/1.html">Здесь демо-страница с кодом выше</a>. Да, она не выглядит хорошо, но если вы откроете веб-инспектор, вы должны увидеть что-то подобное:</p>
+	<img src="images/adding_elements_web_inspector_1.png" alt="Результат в веб-инспекторе"> 
+	<p>Вернемся в редактор HTML-кода страницы, и заменим комментарий между тегами script на строку:</p>
+	<pre class="prettyprint linenums">d3.select("body").append("p").text("New paragraph!");</pre>
+	<p>Сохраним код и обновим страницу в браузере(или посмотрим соответствующую <a href="http://alignedleft.com/content/03-tutorials/01-d3/40-adding-elements/2.html">демо-страницу примера</a>), и вуаля! В ранее пустом окне браузера теперь находится текст, а если откроем веб-инспектор, то увижим следующее:</p>
+	<img src="images/adding_elements_web_inspector_2.png" alt="Результат в веб-инспекторе">
+	<p>Видите разницу? Теперь в DOM видно, как добавлен новый элемент p что называется, на лету! Может быть сейчас это не круто, но вскоре вы будете использовать ту же технику для динамического создания десятков или даже сотен элементов, и каждый будет соответствовать кусочку вашего набора данных.</p>
+	<p>Давайте пробежимся по последовательности действий, что мы сделали:</p>
+	<ol>
+		<li>Вызвали метод select() объекта D3, который выбирает один элемент из DOM'a, используя синтаксис селекторов CSS(Мы выбрали элемент body).</li>
+		<li>Создали новый p-элемент и добавили его в конец нашего выбранного элемента, то есть в место, расположенное перед закрывающимся тегом </body>.</li>
+		<li>Добавили текст "New paragraph!" в пустой тег p.</li>
+	</ol>
+	<p>Все эти бешеные штучки лишь часть цепочечного синтаксиса, который поддерживается D3.</p>
+		</div>
+	</body>
+</html>

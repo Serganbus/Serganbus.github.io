@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/metro-bootstrap.css">
+		<link rel="stylesheet" href="css/metro-bootstrap-responsive.css">
+		<link rel="stylesheet" href="css/iconFont.css">
+		<link rel="stylesheet" href="js/prettify/prettify.css">
+
+        <script src="js/jquery/jquery.min.js"></script>
+        <script src="js/jquery/jquery.widget.min.js"></script>
+        <script src="js/jquery/jquery.mousewheel.js"></script>
+		<script src="js/prettify/prettify.js"></script>
+        <script src="js/metro/metro.min.js"></script>
+		
+		<script src="js/docs.js"></script>
+		<script src="js/github.info.js"></script>
+	
+		<title>Сила метода data()</title>
+	</head>
+	<body class="metro">
+		<div class="container">
+			<div align="center">
+		<h1>Сила метода data()</h1>
+	</div>
+	<br/>
+	<p>Мы остановились на <a href="http://alignedleft.com/content/03-tutorials/01-d3/90-the-power-of-data/1.html">простой столбиковой диаграмме</a>, нарисованной с помощью div'ов и сгенерированной из нашего простого набора данных:</p>
+	<pre class="prettyprint linenums">var dataset = [ 5, 10, 15, 20, 25 ];</pre>
+	<img src="images/power_of_data_1.png" alt="Результат работы кода">
+	<p>Это великолепно, но в реальном мире данные редко представлены как этот график. Давайте изменим <a href="http://alignedleft.com/content/03-tutorials/01-d3/90-the-power-of-data/2.html">наши данные</a>:</p>
+	<pre class="prettyprint linenums">var dataset = [ 25, 7, 5, 26, 11 ];</pre>
+	<img src="images/power_of_data_2.png" alt="Результат работы кода">
+	<p>Мы не ограничены пятью значениями нашего набора данных. Давайте <a href="http://alignedleft.com/content/03-tutorials/01-d3/90-the-power-of-data/3.html">добавим больше</a>!</p>
+	<pre class="prettyprint linenums">var dataset = [ 25, 7, 5, 26, 11, 8, 25, 14, 23, 19, 14, 11, 22, 29, 11, 13, 12, 17, 18, 10, 24, 18, 25, 9, 3 ];</pre>
+	<img src="images/power_of_data_3.png" alt="Результат работы кода">
+	<p>25 значений вместо пяти! Как же D3 автоматически расширит наш график?</p>
+	<pre class="prettyprint linenums">
+d3.select("body").selectAll("div")
+    .data(dataset)  // <-- The answer is here!
+    .enter()
+    .append("div")
+    .attr("class", "bar")
+    .style("height", function(d) {
+        var barHeight = d * 5;
+        return barHeight + "px";
+    });</pre>
+	<p>Дадите методу data() десять значений, и он пройдется по десяти значениям. Дадите ему миллион значений - он пройдется по миллиону значениям(только будьте терпеливы).</p>
+	<p>Именно в этом и есть сила метода data() - быть достаточно умным, чтобы обрабатывать все значения любого набора данных, который вы передаете в метод. Каждому методу, который будет выполняться после вызова data() в цепочке вызовов, будет передаваться параметр d, который будет ссылаться на текущее значение в наборе данных. И так для всего набора данных!</p>
+	<p>Понять это может быть затруднительно, и если до сих пор для вас это не кажется очень полезным - вы измените свою точку зрения. Я призываю вас сохранить код предыдущей HTML-страницы выше, подправить значения набора данных и проследить, как наш график меняется.</p>
+	<p>Помните, что данные управляют визуальными образами, а не наоборот.</p>
+	<br/>
+	<h3>Случайные данные</h3>
+	<p>Иногда бывает весело сгенерировать случайные данные для целей тестирования или если вы полный задрот. <a href="http://alignedleft.com/content/03-tutorials/01-d3/90-the-power-of-data/4.html">Вот то, о чем я говорю</a>. Заметьте, что каждый раз при обновлении страницы, столбики имеют разную высоту.</p>
+	<img src="images/power_of_data_4.png" alt="Результат работы кода">
+	<br/>
+	<br/>
+	<img src="images/power_of_data_5.png" alt="Результат работы кода">
+	<br/>
+	<br/>
+	<img src="images/power_of_data_6.png" alt="Результат работы кода">
+	<p>Если вы загляните в исходники страницы, вы увидите такой код:</p>
+	<pre class="prettyprint linenums">
+var dataset = [];                        //Initialize empty array
+for (var i = 0; i < 25; i++) {           //Loop 25 times
+    var newNumber = Math.random() * 30;  //New random number (0-30)
+    dataset.push(newNumber);             //Add new number to array
+}</pre>
+	<p>Этот код не использует каких-либо D3 методов; это простой JavaScript. Без погружения в детали, этот код:</p>
+	<ol>
+		<li>Создает пустой массив с идентификатором dataset;</li>
+		<li>Инициализирует цикл for, тело которого выполняется 25 раз;</li>
+		<li>Каждый раз внутри тела цикла for генерируется новое случайное значение в промежутке от 0 до 30;</li>
+		<li>Это новое значение добавляется в массив dataset(метод push() вызывается у массива и добавляет новое значение в его конец).</li>
+	</ol>
+	<p>Просто для прикола, откройте JavaScript консоль и введите console.log(dataset). Вы должны увидеть массив, состоящий из 25 случайных чисел.</p>
+	<img src="images/power_of_data_7.png" alt="Результат работы кода">
+	<p>Заметьте, что все числа в десятичном формате или в формате с плавающей запятой, а не целые числа, к которым мы привыкли изначально. Для этого примера десятичные значения подходят, но если вам когда-нибудь понадобится целое число, то можно использовать метод Math.round(). Например, вы можете обвернуть случайно сгенерированное число из кода:</p>
+	<pre class="prettyprint linenums">var newNumber = Math.random() * 30;</pre>
+	<p>как показано ниже:</p>
+	<pre class="prettyprint linenums">var newNumber = Math.round(Math.random() * 30);</pre>
+	<p>Можете посмотреть результат <a href="http://alignedleft.com/content/03-tutorials/01-d3/90-the-power-of-data/5.html">тут</a>, и используя консоль, проверить что теперь  числа в массиве все целые.</p>
+	<img src="images/power_of_data_8.png" alt="Результат работы кода">
+	<p>Дальше мы будет расширять наши возможности визуализации с использованием SVG.</p>
+		</div>
+	</body>
+</html>

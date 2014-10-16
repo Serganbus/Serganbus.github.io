@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/metro-bootstrap.css">
+		<link rel="stylesheet" href="css/metro-bootstrap-responsive.css">
+		<link rel="stylesheet" href="css/iconFont.css">
+		<link rel="stylesheet" href="js/prettify/prettify.css">
+
+        <script src="js/jquery/jquery.min.js"></script>
+        <script src="js/jquery/jquery.widget.min.js"></script>
+        <script src="js/jquery/jquery.mousewheel.js"></script>
+		<script src="js/prettify/prettify.js"></script>
+        <script src="js/metro/metro.min.js"></script>
+		
+		<script src="js/docs.js"></script>
+		<script src="js/github.info.js"></script>
+	
+		<title>Установка</title>
+	</head>
+	<body class="metro">
+		<div class="container">
+			<div align="center">
+		<h1>Установка</h1>
+	</div>
+	<br/>
+	<h3>Скачивание D3</h3>
+	<p>Для начала необходимо создать папку для своего проекта. В этой папке я рекомендую создать подпапку с названием d3. Дальше необходимо скачать последнюю версию библиотеки D3 в созданную подпапку. В момент написания данной статьи, последней версией D3 была 3.4.2.</p>
+	<p>В D3 также предусмотрена минифицированная версия, расположенная в файле d3.v3.min.js, из который были удалены всякие пробелы и ненужные символы, чтобы получить более меньший объем файла, чтобы он быстрее скачивался. Эта версия от обычной не отличается функциональностью, однако при работе с проектом лучше использовать обычную версию, чтобы было проще отлаживать проект, а после окончания работы над проектом и публикацией его, заменить обычную версию на минифицированную. Выбор за вами, но в этом руководстве мы будем использовать обычную версию.</p>
+	<p>Третий вариант - скачать весь репозиторий D3, в котором находятся не только JavaScript файлы, но и все компоненты исходного кода. Вы можете просматривать содержимое репозитория, либо просто скачать все это как сжатый ZIP-архив.</p>
+	<br/>
+	<h3>Подключение D3</h3>
+	<p>Создайте простую HTML-страницу внутри папки вашего проекта и назовите ее index.html. Структура папки вашего проекта должна выглядеть, как показано ниже:</p>
+	<pre class="prettyprint linenums">
+project-folder/
+    d3/
+        d3.v3.js
+        d3.v3.min.js (optional)
+    index.html
+	</pre>
+	<p>Теперь необходимо вставить каркас кода HTML-страницы, предоставленный ниже. В этом каркасе библиотека D3 подключена внутри тега head, а также в этой странице указано место, где мы будем писать свой JavaScript-код.</p>
+	<pre class="prettyprint linenums">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;title&gt;D3 Test&lt;/title&gt;
+        &lt;script type="text/javascript" src="d3/d3.v3.js"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;script type="text/javascript"&gt;
+            // Your beautiful D3 code will go here
+        &lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+	</pre>
+	<br/>
+	<h3>Просмотр страницы</h3>
+	<p>В любом случае, вы можете открыть получившийся ваш HTML-файл в любом браузере и посмотреть, что получилось. Однако, когда загружаются внешние библиотеки, более надежным будет запустить локальный веб-сервер и смотреть страницу оттуда по адресу http://localhost:8888/. Можно использовать сервер, <a href="http://www.mamp.info/en/">например MAMP</a>, или посмотреть заметки в <a href="https://github.com/mbostock/d3/wiki">вики</a>, как быстро активировать пустой сервер.</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/metro-bootstrap.css">
+		<link rel="stylesheet" href="css/metro-bootstrap-responsive.css">
+		<link rel="stylesheet" href="css/iconFont.css">
+		<link rel="stylesheet" href="js/prettify/prettify.css">
+
+        <script src="js/jquery/jquery.min.js"></script>
+        <script src="js/jquery/jquery.widget.min.js"></script>
+        <script src="js/jquery/jquery.mousewheel.js"></script>
+		<script src="js/prettify/prettify.js"></script>
+        <script src="js/metro/metro.min.js"></script>
+		
+		<script src="js/docs.js"></script>
+		<script src="js/github.info.js"></script>
+	
+		<title>Использование данных</title>
+	</head>
+	<body class="metro">
+		<div class="container">
+			<div align="center">
+		<h1>Использование данных</h1>
+	</div>
+	<br/>
+	<p>После того, как вы загрузили ваши данные и связали их с только что созданными DOM-элементами, как вы могли бы их использовать? Ниже приведен наш прошлый код:</p>
+	<pre class="prettyprint linenums">
+var dataset = [ 5, 10, 15, 20, 25 ];
+
+d3.select("body").selectAll("p")
+    .data(dataset)
+    .enter()
+    .append("p")
+    .text("New paragraph!");</pre>
+	<p>Давайте заменим последнюю строку на:</p>
+	<pre class="prettyprint linenums">.text(function(d) { return d; });</pre>
+	<p>Проверьте, что делает новый код на <a href="http://alignedleft.com/content/03-tutorials/01-d3/70-using-your-data/1.html">демо-странице</a>.</p>
+	<p>Ух ты! Мы использовали наши данные для заполнения содержимого  каждого параграфа, а все благодаря магическому методу data(). Вы видите, когда мы объединяем методы в цепочки, везде, после того, как вы вызвали метод data(), вы можете вызвать анонимную функцию, которая принимает параметр d на вход. Волшебный метод data() гарантирует, что d хранит то значение, которое было привязано к конкретно этому элементу.</p>
+	<p>Значение "текущего элемента" со временем меняется, так как D3 перебирает каждый элемент. Например, когда перебирая в третий раз, наш код создает третий элемент p, то d будет соответствовать третьему значению нашего входного набора данны(dataset[2]). Поэтому третий параграф хранит надпись "15" внутри себя.</p>
+	<br/>
+	<h3>Высоко функциональный</h3>
+	<p>В случае, если вы не знаете, как пишутся новые функции(так же называются методами), базовая структура функции определяется как:</p>
+	<pre class="prettyprint linenums">
+function(input_value) {
+    //Calculate something here
+    return output_value;
+}</pre>
+	<p>Функция, что мы использовали выше невероятно проста, ничего сверхъестественного:</p>
+	<pre class="prettyprint linenums">
+function(d) {
+    return d;
+}</pre>
+	<p>она обернута в функцию text() объекта D3, поэтому, что бы наша функция на возвращала, оно обрабатывается внутри функции text().</p>
+	<pre class="prettyprint linenums">
+.text(function(d) {
+    return d;
+});</pre>
+	<p>Но мы можем быть(и будем) более изобретательны, потому что функцию можно изменить так, как мы захотим. Конечно, это удовольствие и головная боль написания собственного кода на JavaScript. Может быть, вы хотите добавить больше текста, <a href="http://alignedleft.com/content/03-tutorials/01-d3/70-using-your-data/2.html">например</a>:</p>
+	<pre class="prettyprint linenums">
+.text(function(d) {
+    return "I can count up to " + d;
+});</pre>
+	<br/>
+	<h3>Данные должны быть использованы</h3>
+	<p>Вы, возможно удивлены, почему вы должны писать function (d), вместо того, чтобы просто не использовать d-сам по себе. Например, это не будет работать:</p>
+	<pre class="prettyprint linenums">.text("I can count up to " + d);</pre>
+	<p>В этом случае, без обертки d в анонимную функцию, d будет неопределенным. Думаю, что d это просто маленькое шаблонное значение, которому просто необходимо тепло, хранящийся в объятьях скобок доброй, заботливой функции.</p>
+	<p>Здесь d осторожно и подходящим образом обернута в функцию:</p>
+	<pre class="prettyprint linenums">
+.text(function(d) {  // <-- Note tender embrace at left
+    return "I can count up to " + d;
+});</pre>
+	<p>Причиной такого синтаксиса является то, что методы text(), attr() и многие другие методы могут принимать в качестве аргумента функции. Например, text() также может принимать простую строку текста в качестве аргумента:</p>
+	<pre class="prettyprint linenums">.text("someString")</pre>
+	<p>...или результат выполнения функции:</p>
+	<pre class="prettyprint linenums">.text(someFunction())</pre>
+	<p>...или анонимную функцию, которая сама по себе является аргументом, в случае, когда вы пишите приблизительно так:</p>
+	<pre class="prettyprint linenums">
+	.text(function(d) {
+    return d;
+})</pre>
+	<p>Выше вы определили анонимную функцию. Если D3 видит, что имеется анонимная функция в аргументе, он вызывает метод call() этой функции, передавая как аргумент d. Без анонимной функции D3 не знает, кому передавать d в качестве аргумента.</p>
+	<p>Во-первых, это может казаться нелепым, мол надо делать много лишней работы, чтобы просто получить d, но ценность этого подхода будет ясна, когда мы будем разбирать более сложные примеры.</p>
+	<br/>
+	<h3>Помимо текста</h3>
+	<p>Вещи становятся более интересными, когда мы открываем новые методы D3, такие как attr() и style(), которые позволяют устанавливать нам HMTL-атрибуты и CSS-свойства выборки, соответственно.</p>
+	<p>Например, добавление одной строчки в наш код делает <a href="http://alignedleft.com/content/03-tutorials/01-d3/70-using-your-data/3.html">это</a>:</p>
+	<pre class="prettyprint linenums">.style("color", "red");</pre>
+	<p>Теперь весь текст красного цвета, большое дело. Также мы можем использовать другую функцию, которая делает цвет красным, если текущее значение превышает определенный порог. Поэтому мы в последней строке вставим такую функцию:</p>
+	<pre class="prettyprint linenums">
+.style("color", function(d) {
+    if (d > 15) {   //Threshold of 15
+        return "red";
+    } else {
+        return "black";
+    }
+});</pre>
+	<p><a href="http://alignedleft.com/content/03-tutorials/01-d3/70-using-your-data/4.html">Посмотрите этот код в действии</a>. Заметьте, что первые три значения черного цвета, но как только d превышает допустимый порог в 15 - текст становится красным.</p>
+	<p>В следующей главе мы будем использовать attr() и style() для манипулирования div-ами, чтобы создать простую столбиковую диаграмму - наш первый визуальный образ!</p>
+		</div>
+	</body>
+</html>
