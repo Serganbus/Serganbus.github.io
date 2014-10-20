@@ -139,14 +139,17 @@
 						var lPGNextPageName_str = lPageDescriptor_obj.nextPageName;
 						var lPGNExtPageDescription_str = getPageProperty(lPGNextPageName_str, "description");
 						
-						var lNav_e = $("#navigation");
+						var lTopNav_e = $("#top_navigation");
+						var lBottomNav_e = $("#bottom_navigation");
 						
 						if (lPGPrevPageName_str.trim().length > 0) {
 							var lPrevPageNav_e = $("<div class=\"span4\" align=\"center\"/>");
 							var lLinkText_str = "<i class=\"icon-arrow-left-3\"></i>&nbsp;" + lPGPrevPageDescription_str;
 							var lLink_e = $("<a class=\"seganav\" />").attr("href", lPGPrevPageName_str).html(lLinkText_str);
 							lPrevPageNav_e.append(lLink_e);
-							lNav_e.append(lPrevPageNav_e);
+							var lCopyPrevPageNav_e = lPrevPageNav_e.clone();
+							lBottomNav_e.append(lPrevPageNav_e);
+							lTopNav_e.append(lCopyPrevPageNav_e);
 						}
 						
 						var lContentPageNav_e = $("<div align=\"center\"/>");
@@ -158,20 +161,25 @@
 						var lLinkText_str = "<i class=\"icon-book\"></i>&nbsp;" + "Оглавление";
 						var lLink_e = $("<a class=\"seganav\" />").attr("href", "index.html").html(lLinkText_str);
 						lContentPageNav_e.append(lLink_e);
-						lNav_e.append(lContentPageNav_e);
+						var lCopyContentPageNav_e = lContentPageNav_e.clone();
+						lBottomNav_e.append(lContentPageNav_e);
+						lTopNav_e.append(lCopyContentPageNav_e);
 						
 						if (lPGNextPageName_str.trim().length > 0) {
 							var lNextPageNav_e = $("<div class=\"span4\" align=\"center\"/>");
 							var lLinkText_str = lPGNExtPageDescription_str + "&nbsp;<i class=\"icon-arrow-right-3\"></i>";
 							var lLink_e = $("<a class=\"seganav\" />").attr("href", lPGNextPageName_str).html(lLinkText_str);
 							lNextPageNav_e.append(lLink_e);
-							lNav_e.append(lNextPageNav_e);
+							var lCopyNextPageNav_e = lNextPageNav_e.clone();
+							lBottomNav_e.append(lNextPageNav_e);
+							lTopNav_e.append(lCopyNextPageNav_e);
 						}
 						break;
 					}
 				}
-				if (lPageName_str === "index.html") {
-					$("#navigation").hide();
+				if (lPageName_str !== "index.html") {
+					$("#top_navigation").show();
+					$("#bottom_navigation").show();
 				}
 			};
 		</script>
@@ -182,6 +190,9 @@
 			<div class="grid">
 				<div class="row">
 					<div class="span12">
+						<div class="row bg-cyan" id="top_navigation" style="padding: 20px 0; display: none;">
+						</div>
+						
 						<div align="center">
 		<h1>Цепочки методов</h1>
 	</div>
@@ -218,8 +229,13 @@ var p = body.append("p");
 p.text("New paragraph!");</pre>
 	<p>Фу, какое безобразие! Такой синтаксис действительно нужен, если, например, вы вызываете так много функций, что просто не имеет смысла их вызывать одна за другой. Или просто потому, что организовав таким образом код, он стал более понятен вам.</p>
 						
-						<div class="row bg-cyan" id="navigation" style="padding: 20px 0">
+						<div class="row bg-cyan" id="bottom_navigation" style="padding: 20px 0; display: none;">
 						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="span12" style="padding-top: 30px;">
+						<p class="text-muted text-right">Автор перевода <a href="http://serganbus.github.io/">Иванов Сергей</a>. 2014 год</p>
 					</div>
 				</div>
 			</div>
