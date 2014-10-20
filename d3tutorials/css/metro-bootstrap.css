@@ -948,6 +948,24 @@ a {
 .metro .link:active {
   color: rgba(45, 173, 237, 0.6);
 }
+
+/*MINE*/
+.metro a.seganav,
+.metro .link.seganav {
+  color: #000000;
+}
+.metro a.seganav:hover,
+.metro .link.seganav:hover {
+  color: #ffffff;
+}
+.metro a.seganav:focus,
+.metro .link.seganav:focus,
+.metro a.seganav:active,
+.metro .link.seganav:active {
+  color: #ffffff;
+}
+/*MINE*/
+
 .metro div,
 .metro span,
 .metro p {

@@ -15,12 +15,174 @@
 		
 		<script src="js/docs.js"></script>
 		<script src="js/github.info.js"></script>
-	
+		<script type="text/javascript">
+			var lNavigationDescriptor_obj_arr = [
+				{
+					pageName : "about.html",
+					description : "Об этом руководстве",
+					prevPageName : "",
+					nextPageName : "fundamentals.html"
+				},
+				{
+					pageName : "fundamentals.html",
+					description : "Основы",
+					prevPageName : "about.html",
+					nextPageName : "setup.html"
+				},
+				{
+					pageName : "setup.html",
+					description : "Установка",
+					prevPageName : "fundamentals.html",
+					nextPageName : "adding_elements.html"
+				},
+				{
+					pageName : "adding_elements.html",
+					description : "Добавление элементов",
+					prevPageName : "setup.html",
+					nextPageName : "chaining_methods.html"
+				},
+				{
+					pageName : "chaining_methods.html",
+					description : "Цепочки методов",
+					prevPageName : "adding_elements.html",
+					nextPageName : "binding_data.html"
+				},
+				{
+					pageName : "binding_data.html",
+					description : "Привязка данных",
+					prevPageName : "chaining_methods.html",
+					nextPageName : "using_your_data.html"
+				},
+				{
+					pageName : "using_your_data.html",
+					description : "Использование данных",
+					prevPageName : "binding_data.html",
+					nextPageName : "drawing_divs.html"
+				},
+				{
+					pageName : "drawing_divs.html",
+					description : "Рисование с использованием блоков",
+					prevPageName : "using_your_data.html",
+					nextPageName : "power_of_data.html"
+				},
+				{
+					pageName : "power_of_data.html",
+					description : "Сила метода data()",
+					prevPageName : "drawing_divs.html",
+					nextPageName : "svg_primer.html"
+				},
+				{
+					pageName : "svg_primer.html",
+					description : "Пример с использованием SVG",
+					prevPageName : "power_of_data.html",
+					nextPageName : "drawing_svgs.html"
+				},
+				{
+					pageName : "drawing_svgs.html",
+					description : "Рисование с использованием SVG-элементов",
+					prevPageName : "svg_primer.html",
+					nextPageName : "types_of_data.html"
+				},
+				{
+					pageName : "types_of_data.html",
+					description : "Типы данных",
+					prevPageName : "drawing_svgs.html",
+					nextPageName : "making_bar_chart.html"
+				},
+				{
+					pageName : "making_bar_chart.html",
+					description : "Делаем столбиковую диаграмму",
+					prevPageName : "types_of_data.html",
+					nextPageName : "making_scatterplot.html"
+				},
+				{
+					pageName : "making_scatterplot.html",
+					description : "Делаем точечную диаграмму",
+					prevPageName : "making_bar_chart.html",
+					nextPageName : "scales.html"
+				},
+				{
+					pageName : "scales.html",
+					description : "Масштабирование",
+					prevPageName : "making_scatterplot.html",
+					nextPageName : "axes.html"
+				},
+				{
+					pageName : "axes.html",
+					description : "Координатные оси",
+					prevPageName : "scales.html",
+					nextPageName : ""
+				}
+			];
+			
+			function getPageProperty(aPageName_str, aPropertyName_str) {
+				var lPagesCount_int = lNavigationDescriptor_obj_arr.length;
+				for (var i = 0; i < lPagesCount_int; i++) {
+					var lPageDescriptor_obj = lNavigationDescriptor_obj_arr[i];
+					var lPGPageName_str = lPageDescriptor_obj.pageName;
+					if (aPageName_str === lPGPageName_str) {
+						return lPageDescriptor_obj[aPropertyName_str];
+					}
+				}
+				return "";
+			}
+			
+			window.onload = function () {
+				var lPageName_str = location.href.match(/[^/]+\.html/i)[0];
+				var lPagesCount_int = lNavigationDescriptor_obj_arr.length;
+				for (var i = 0; i < lPagesCount_int; i++) {
+					var lPageDescriptor_obj = lNavigationDescriptor_obj_arr[i];
+					var lPGPageName_str = lPageDescriptor_obj.pageName;
+					if (lPageName_str === lPGPageName_str) {
+						var lPGPrevPageName_str = lPageDescriptor_obj.prevPageName;
+						var lPGPrevPageDescription_str = getPageProperty(lPGPrevPageName_str, "description");
+						var lPGNextPageName_str = lPageDescriptor_obj.nextPageName;
+						var lPGNExtPageDescription_str = getPageProperty(lPGNextPageName_str, "description");
+						
+						var lNav_e = $("#navigation");
+						
+						if (lPGPrevPageName_str.trim().length > 0) {
+							var lPrevPageNav_e = $("<div class=\"span4\" align=\"center\"/>");
+							var lLinkText_str = "<i class=\"icon-arrow-left-3\"></i>&nbsp;" + lPGPrevPageDescription_str;
+							var lLink_e = $("<a class=\"seganav\" />").attr("href", lPGPrevPageName_str).html(lLinkText_str);
+							lPrevPageNav_e.append(lLink_e);
+							lNav_e.append(lPrevPageNav_e);
+						}
+						
+						var lContentPageNav_e = $("<div align=\"center\"/>");
+						if (lPGPrevPageName_str.trim().length > 0) {
+							lContentPageNav_e.addClass("span4");
+						} else {
+							lContentPageNav_e.addClass("span4 offset4");
+						}
+						var lLinkText_str = "<i class=\"icon-book\"></i>&nbsp;" + "Оглавление";
+						var lLink_e = $("<a class=\"seganav\" />").attr("href", "index.html").html(lLinkText_str);
+						lContentPageNav_e.append(lLink_e);
+						lNav_e.append(lContentPageNav_e);
+						
+						if (lPGNextPageName_str.trim().length > 0) {
+							var lNextPageNav_e = $("<div class=\"span4\" align=\"center\"/>");
+							var lLinkText_str = lPGNExtPageDescription_str + "&nbsp;<i class=\"icon-arrow-right-3\"></i>";
+							var lLink_e = $("<a class=\"seganav\" />").attr("href", lPGNextPageName_str).html(lLinkText_str);
+							lNextPageNav_e.append(lLink_e);
+							lNav_e.append(lNextPageNav_e);
+						}
+						break;
+					}
+				}
+				if (lPageName_str === "index.html") {
+					$("#navigation").hide();
+				}
+			};
+		</script>
 		<title>Установка</title>
 	</head>
 	<body class="metro">
 		<div class="container">
-			<div align="center">
+			<div class="grid">
+				<div class="row">
+					<div class="span12">
+						<div align="center">
 		<h1>Установка</h1>
 	</div>
 	<br/>
@@ -57,6 +219,12 @@ project-folder/
 	<br/>
 	<h3>Просмотр страницы</h3>
 	<p>В любом случае, вы можете открыть получившийся ваш HTML-файл в любом браузере и посмотреть, что получилось. Однако, когда загружаются внешние библиотеки, более надежным будет запустить локальный веб-сервер и смотреть страницу оттуда по адресу http://localhost:8888/. Можно использовать сервер, <a href="http://www.mamp.info/en/">например MAMP</a>, или посмотреть заметки в <a href="https://github.com/mbostock/d3/wiki">вики</a>, как быстро активировать пустой сервер.</p>
+						
+						<div class="row bg-cyan" id="navigation" style="padding: 20px 0">
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
