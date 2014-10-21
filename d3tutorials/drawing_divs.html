@@ -261,7 +261,7 @@ d3.select("body").selectAll("div")
 	<p>Загляните на <a href="http://alignedleft.com/content/03-tutorials/01-d3/80-drawing-divs/1.html">демо-страницу с этим кодом</a>. Чтобы убедиться в этом, откройте исходники кода, и откройте веб-инспектор, чтобы увидеть, что происходит. Вы должны увидеть пять вертикальных столбиков, которые сгенерированы по одному для каждого значения в наборе данных. Без пробелов между ними, они смотрятся как один большой квадрат.</p>
 	<br/>
 	<h3>Устанавливаем стили</h3>
-	<p>Метод style()(https://github.com/mbostock/d3/wiki/Selections#style) используется для установки CSS-свойств и значений напрямую. HTML-элеметну. Это эквивалентно включению CSS-правил в атрибут style прямо в HTML-коде, как на примере:</p>
+	<p>Метод <a href="https://github.com/mbostock/d3/wiki/Selections#style">style()</a> используется для установки CSS-свойств и значений напрямую. HTML-элеметну. Это эквивалентно включению CSS-правил в атрибут style прямо в HTML-коде, как на примере:</p>
 	<pre class="prettyprint linenums">&lt;div style="height: 75px;"&gt;&lt;/div&gt;</pre>
 	<p>В столбиковой диаграмме высота каждого столбика должна быть фукнцией от соответствующего значения. Давайте добавим это в конец нашего D3 кода:</p>
 	<pre class="prettyprint linenums">
@@ -288,11 +288,40 @@ d3.select("body").selectAll("div")
 					</div>
 				</div>
 				<div class="row">
+					<div class="span12">
+						<div id="disqus_thread"></div>
+					</div>
+				</div>
+				<div class="row">
 					<div class="span12" style="padding-top: 30px;">
 						<p class="text-muted text-right">Автор перевода <a href="http://serganbus.github.io/">Иванов Сергей</a>. 2014 год</p>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+		var lPageName_str = location.href.match(/[^/]+\.html/i)[0];
+		var lPageDescription_str = getPageProperty(lPageName_str, "description");
+		
+		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "serganbus"; // required: replace example with your forum shortname
+		var disqus_identifier = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
+		var disqus_url = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
+		var disqus_category_id = "3309433";
+		
+		console.log(disqus_shortname);
+		console.log(disqus_identifier);
+		console.log(disqus_url);
+		console.log(disqus_category_id);
+		
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+		</script>
+		
 	</body>
 </html>

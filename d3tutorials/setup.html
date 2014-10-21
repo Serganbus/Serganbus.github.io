@@ -213,8 +213,7 @@ project-folder/
     d3/
         d3.v3.js
         d3.v3.min.js (optional)
-    index.html
-	</pre>
+    index.html</pre>
 	<p>Теперь необходимо вставить каркас кода HTML-страницы, предоставленный ниже. В этом каркасе библиотека D3 подключена внутри тега head, а также в этой странице указано место, где мы будем писать свой JavaScript-код.</p>
 	<pre class="prettyprint linenums">
 &lt;!DOCTYPE html&gt;
@@ -229,8 +228,7 @@ project-folder/
             // Your beautiful D3 code will go here
         &lt;/script&gt;
     &lt;/body&gt;
-&lt;/html&gt;
-	</pre>
+&lt;/html&gt;</pre>
 	<br/>
 	<h3>Просмотр страницы</h3>
 	<p>В любом случае, вы можете открыть получившийся ваш HTML-файл в любом браузере и посмотреть, что получилось. Однако, когда загружаются внешние библиотеки, более надежным будет запустить локальный веб-сервер и смотреть страницу оттуда по адресу http://localhost:8888/. Можно использовать сервер, <a href="http://www.mamp.info/en/">например MAMP</a>, или посмотреть заметки в <a href="https://github.com/mbostock/d3/wiki">вики</a>, как быстро активировать пустой сервер.</p>
@@ -240,11 +238,40 @@ project-folder/
 					</div>
 				</div>
 				<div class="row">
+					<div class="span12">
+						<div id="disqus_thread"></div>
+					</div>
+				</div>
+				<div class="row">
 					<div class="span12" style="padding-top: 30px;">
 						<p class="text-muted text-right">Автор перевода <a href="http://serganbus.github.io/">Иванов Сергей</a>. 2014 год</p>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+		var lPageName_str = location.href.match(/[^/]+\.html/i)[0];
+		var lPageDescription_str = getPageProperty(lPageName_str, "description");
+		
+		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "serganbus"; // required: replace example with your forum shortname
+		var disqus_identifier = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
+		var disqus_url = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
+		var disqus_category_id = "3309433";
+		
+		console.log(disqus_shortname);
+		console.log(disqus_identifier);
+		console.log(disqus_url);
+		console.log(disqus_category_id);
+		
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+		</script>
+		
 	</body>
 </html>

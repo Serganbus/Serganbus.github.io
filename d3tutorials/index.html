@@ -202,7 +202,7 @@
 	</div>
 	<br/>
 	<h2>Предисловие</h2>
-	<p>Это руководство является переводом английского оригинала <a href="http://alignedleft.com/tutorials/d3">D3 Tutorials</a>, написанного Скоттом Мюрреем. За это ему отдельная благодарность.
+	<p>Это руководство является переводом английского оригинала <a href="http://alignedleft.com/tutorials/d3">D3 Tutorials</a>, написанного <a href="http://alignedleft.com/">Скоттом Мюрреем</a>. За это ему отдельная благодарность.
 	В свою очередь, D3 Tutorials - это сокращенная версия другой книги, более полно описывающей библиотеку визуализации D3 <a href="http://chimera.labs.oreilly.com/books/1230000000345/index.html">Interactive Data Visualization for the Web</a>.</p>
 	<p>Далее, материал в книге излагается от лица автора оригинала.</p>
 	<h3>Содержание</h3>
@@ -232,11 +232,40 @@
 					</div>
 				</div>
 				<div class="row">
+					<div class="span12">
+						<div id="disqus_thread"></div>
+					</div>
+				</div>
+				<div class="row">
 					<div class="span12" style="padding-top: 30px;">
 						<p class="text-muted text-right">Автор перевода <a href="http://serganbus.github.io/">Иванов Сергей</a>. 2014 год</p>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<script type="text/javascript">
+		var lPageName_str = location.href.match(/[^/]+\.html/i)[0];
+		var lPageDescription_str = getPageProperty(lPageName_str, "description");
+		
+		/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = "serganbus"; // required: replace example with your forum shortname
+		var disqus_identifier = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
+		var disqus_url = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
+		var disqus_category_id = "3309433";
+		
+		console.log(disqus_shortname);
+		console.log(disqus_identifier);
+		console.log(disqus_url);
+		console.log(disqus_category_id);
+		
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+		</script>
+		
 	</body>
 </html>
