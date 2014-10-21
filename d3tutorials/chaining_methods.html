@@ -210,15 +210,15 @@
 d3.select("body")
     .append("p")
     .text("New paragraph!");</pre>
-	<p>Каждый придерживается своего стиля оформления кода. Использование отступов, переходов на новую строку или пробелов(либо табов) работает на вас, помогая лучше воспринимать код./p>
+	<p>Каждый придерживается своего стиля оформления кода. Использование отступов, переходов на новую строку или пробелов(либо табов) работает на вас, помогая лучше воспринимать код.</p>
 	<br/>
 	<h3>Одна ссылка в момент времени</h3>
 	<p>Давайте разберем каждый кусок кода:</p>
-	<p>d3 -  ссылается на D3 объект, из которого мы имеем доступ к методам D3.</p>
-	<p>.select("body") - дает методу <a href="https://github.com/mbostock/d3/wiki/Selections#wiki-d3_select">select()</a> CSS-селектор на вход, а метод, в свою очередь, возвращает ссылку на первый элемент в DOM'e, который подходит под описание селектора(необходимо использовать метод selectAll() для получения группы объектов). В данном случае, нам нужен элемент body, поэтому ссылка на body используется следующим методом в нашей цепочке.</p>
-	<p>.append("p") - метод <a href="https://github.com/mbostock/d3/wiki/Selections#append">append()</a> создает любой DOM-элемент, указанный вами и добавляет его в конец(внутрь) выборки. В нашем случае мы хотим создать новый параграф p внутри тега body. Мы указали p как аргумент функции, которая вызывается у элемента body, который мы выбрали вызовом предыдущего метода select(). В конце-концов, append() возвращает ссылку на новый элемент, который только что был создан.</p>
-	<p>.text("New paragraph!")  - метод <a href="https://github.com/mbostock/d3/wiki/Selections#text">text()</a> в качестве аргумента принимает строку и вставляет ее между открывающимся и закрывающимся тегами выборки. Так как предыдущий метод возвращает ссылку на наш новый тег p, этот код вставляет переданный текст между тегами <i>&lt;p&gt;</i> и <i>&lt;/p&gt;</i>.(Если между тегами будет существовать текст, то он будет перезаписан).</p>
-	<p>; - самый важный символ, который указывает на окончание этой строки кода.</p>
+	<p><i>d3</i> -  ссылается на D3 объект, из которого мы имеем доступ к методам D3.</p>
+	<p><i>.select("body")</i> - дает методу <a href="https://github.com/mbostock/d3/wiki/Selections#wiki-d3_select"><i>select()</i></a> CSS-селектор на вход, а метод, в свою очередь, возвращает ссылку на первый элемент в DOM'e, который подходит под описание селектора(необходимо использовать метод <i>selectAll()</i> для получения группы объектов). В данном случае, нам нужен элемент <i>body</i>, поэтому ссылка на <i>body</i> используется следующим методом в нашей цепочке.</p>
+	<p><i>.append("p")</i> - метод <a href="https://github.com/mbostock/d3/wiki/Selections#append"><i>append()</i></a> создает любой DOM-элемент, указанный вами и добавляет его в конец(внутрь) выборки. В нашем случае мы хотим создать новый параграф <i>p</i> внутри тега <i>body</i>. Мы указали <i>p</i> как аргумент функции, которая вызывается у элемента <i>body</i>, который мы выбрали вызовом предыдущего метода <i>select()</i>. В конце-концов, <i>append()</i> возвращает ссылку на новый элемент, который только что был создан.</p>
+	<p><i>.text("New paragraph!")</i>  - метод <a href="https://github.com/mbostock/d3/wiki/Selections#text"><i>text()</i></a> в качестве аргумента принимает строку и вставляет ее между открывающимся и закрывающимся тегами выборки. Так как предыдущий метод возвращает ссылку на наш новый тег <i>p</i>, этот код вставляет переданный текст между тегами <i>&lt;p&gt;</i> и <i>&lt;/p&gt;</i>.(Если между тегами будет существовать текст, то он будет перезаписан).</p>
+	<p><i>;</i> - самый важный символ, который указывает на окончание этой строки кода.</p>
 	<br/>
 	<h3>Удобство</h3>
 	<p>Многие, но не все D3 методы возвращают выборку(хотя, по правде говоря, ссылку на эту выборку), что открывает возможность создавать цепочки методов. Обычно, метод возвращает ссылку на элемент, у которого этот метод был вызван, но не всегда.</p>
@@ -237,11 +237,11 @@ p.text("New paragraph!");</pre>
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<!--div class="row">
 					<div class="span12">
 						<div id="disqus_thread"></div>
 					</div>
-				</div>
+				</div-->
 				<div class="row">
 					<div class="span12" style="padding-top: 30px;">
 						<p class="text-muted text-right">Автор перевода <a href="http://serganbus.github.io/">Иванов Сергей</a>. 2014 год</p>
@@ -250,7 +250,7 @@ p.text("New paragraph!");</pre>
 			</div>
 		</div>
 		
-		<script type="text/javascript">
+		<!--script type="text/javascript">
 		var lPageName_str = location.href.match(/[^/]+\.html/i)[0];
 		var lPageDescription_str = getPageProperty(lPageName_str, "description");
 		
@@ -260,18 +260,13 @@ p.text("New paragraph!");</pre>
 		var disqus_url = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
 		var disqus_category_id = "3309433";
 		
-		console.log(disqus_shortname);
-		console.log(disqus_identifier);
-		console.log(disqus_url);
-		console.log(disqus_category_id);
-		
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-		</script>
+		</script-->
 		
 	</body>
 </html>

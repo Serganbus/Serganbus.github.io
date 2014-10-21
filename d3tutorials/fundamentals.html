@@ -264,7 +264,7 @@ p {
 &lt;/head&gt;</pre>
 	<br/>
 	<h3>JavaScript</h3>
-	<p>JavaScript является динамическим языком сценариев, который может заставлять браузер делать изменения на странице, когда она уже загружена. Сценарии могут быть помещены напрямую в html-страницу между тегами script. Например:</p>
+	<p>JavaScript является динамическим языком сценариев, который может заставлять браузер делать изменения на странице, когда она уже загружена. Сценарии могут быть помещены напрямую в HTML-страницу между тегами script. Например:</p>
 	<pre class="prettyprint linenums">
 &lt;body&gt;
     &lt;script type="text/javascript"&gt;
@@ -284,7 +284,7 @@ p {
 	<p>В то время как "View Source" показывает вам исходный код HTML-страницы, веб-инспектор показывает вам текущее состояние DOM. Это очень полезно, потому что ваш код будет динамически изменять DOM элементы. В веб-инспекторе можно видеть, как меняются элементы. Так же вы будете пользоваться JavaScript-консолью для отладки.</p>
 	<br/>
 	<h3><abbr title="Scalable Vector Graphics">SVG</abbr></h3>
-	<p>D3 лучше всех, когда отрисовывает образы с использованием масштабируемой векторной графики.SVG - это формат изображений, который задается текстовым описанием. Это означает, что можно указать, как SVG изображение должно выглядеть путем написания кода простым языком разметки, наподобие HTML. В сущности, SVG-код может быть включен напрямую в HTML-код страницы.</p>
+	<p>D3 лучше всех, когда отрисовывает образы с использованием масштабируемой векторной графики. SVG - это формат изображений, который задается текстовым описанием. Это означает, что можно указать, как SVG изображение должно выглядеть путем написания кода простым языком разметки, наподобие HTML. В сущности, SVG-код может быть включен напрямую в HTML-код страницы.</p>
 	<p>Веб-браузеры поддерживают формат SVG в течении многих лет(за исключением <a href="http://caniuse.com/#feat=svg">Internet Explorer</a>), но он до сих пор не совсем прижился.</p>
 	<p>Небольшой круг можно нарисовать, используя следующий код:</p>
 	<svg width="50" height="50">
@@ -301,11 +301,11 @@ p {
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<!--div class="row">
 					<div class="span12">
 						<div id="disqus_thread"></div>
 					</div>
-				</div>
+				</div-->
 				<div class="row">
 					<div class="span12" style="padding-top: 30px;">
 						<p class="text-muted text-right">Автор перевода <a href="http://serganbus.github.io/">Иванов Сергей</a>. 2014 год</p>
@@ -314,7 +314,7 @@ p {
 			</div>
 		</div>
 		
-		<script type="text/javascript">
+		<!--script type="text/javascript">
 		var lPageName_str = location.href.match(/[^/]+\.html/i)[0];
 		var lPageDescription_str = getPageProperty(lPageName_str, "description");
 		
@@ -324,18 +324,13 @@ p {
 		var disqus_url = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
 		var disqus_category_id = "3309433";
 		
-		console.log(disqus_shortname);
-		console.log(disqus_identifier);
-		console.log(disqus_url);
-		console.log(disqus_category_id);
-		
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-		</script>
+		</script-->
 		
 	</body>
 </html>

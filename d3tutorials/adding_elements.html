@@ -201,7 +201,7 @@
 		<h1>Добавление элементов</h1>
 	</div>
 	<br/>
-	<p>Один из ваших первых шагов будет использование D3 для создания нового DOM-элемента. Обычно, это будет SVG-объект для отрисовки визуализации данных, но мы начнем с самого простого, и просто создадим элемент p.</p>
+	<p>Один из ваших первых шагов будет использование D3 для создания нового DOM-элемента. Обычно, это будет SVG-объект для отрисовки визуализации данных, но мы начнем с самого простого, и просто создадим элемент <i>p</i>.</p>
 	<p>Начинаем с простого HTML-шаблона страницы:</p>
 	<pre class="prettyprint linenums">
 &lt;!DOCTYPE html&gt;
@@ -223,12 +223,12 @@
 	<pre class="prettyprint linenums">d3.select("body").append("p").text("New paragraph!");</pre>
 	<p>Сохраним код и обновим страницу в браузере(или посмотрим соответствующую <a href="http://alignedleft.com/content/03-tutorials/01-d3/40-adding-elements/2.html">демо-страницу примера</a>), и вуаля! В ранее пустом окне браузера теперь находится текст, а если откроем веб-инспектор, то увижим следующее:</p>
 	<img src="images/adding_elements_web_inspector_2.png" alt="Результат в веб-инспекторе">
-	<p>Видите разницу? Теперь в DOM видно, как добавлен новый элемент p что называется, на лету! Может быть сейчас это не круто, но вскоре вы будете использовать ту же технику для динамического создания десятков или даже сотен элементов, и каждый будет соответствовать кусочку вашего набора данных.</p>
+	<p>Видите разницу? Теперь в DOM видно, как добавлен новый элемент <i>p</i> что называется, на лету! Может быть сейчас это не круто, но вскоре вы будете использовать ту же технику для динамического создания десятков или даже сотен элементов, и каждый будет соответствовать кусочку вашего набора данных.</p>
 	<p>Давайте пробежимся по последовательности действий, что мы сделали:</p>
 	<ol>
-		<li>Вызвали метод select() объекта D3, который выбирает один элемент из DOM'a, используя синтаксис селекторов CSS(Мы выбрали элемент body).</li>
-		<li>Создали новый p-элемент и добавили его в конец нашего выбранного элемента, то есть в место, расположенное перед закрывающимся тегом </body>.</li>
-		<li>Добавили текст "New paragraph!" в пустой тег p.</li>
+		<li>Вызвали метод <i>select()</i> объекта <i>d3</i>, который выбирает один элемент из DOM'a, используя синтаксис селекторов CSS(Мы выбрали элемент <i>body</i>).</li>
+		<li>Создали новый <i>p</i>-элемент и добавили его в конец нашего выбранного элемента, то есть в место, расположенное перед закрывающимся тегом <i>&lt;/body&gt;</i>.</li>
+		<li>Добавили текст "New paragraph!" в пустой тег <i>p</i>.</li>
 	</ol>
 	<p>Все эти бешеные штучки лишь часть цепочечного синтаксиса, который поддерживается D3.</p>
 						
@@ -236,11 +236,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<!--div class="row">
 					<div class="span12">
 						<div id="disqus_thread"></div>
 					</div>
-				</div>
+				</div-->
 				<div class="row">
 					<div class="span12" style="padding-top: 30px;">
 						<p class="text-muted text-right">Автор перевода <a href="http://serganbus.github.io/">Иванов Сергей</a>. 2014 год</p>
@@ -249,7 +249,7 @@
 			</div>
 		</div>
 		
-		<script type="text/javascript">
+		<!--script type="text/javascript">
 		var lPageName_str = location.href.match(/[^/]+\.html/i)[0];
 		var lPageDescription_str = getPageProperty(lPageName_str, "description");
 		
@@ -259,18 +259,13 @@
 		var disqus_url = "http://serganbus.github.io//d3tutorials/" + lPageName_str;
 		var disqus_category_id = "3309433";
 		
-		console.log(disqus_shortname);
-		console.log(disqus_identifier);
-		console.log(disqus_url);
-		console.log(disqus_category_id);
-		
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
-		</script>
+		</script-->
 		
 	</body>
 </html>
