@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Блог программиста]]></title>
-  <link href="http://serganbus.github.io//atom.xml" rel="self"/>
-  <link href="http://serganbus.github.io//"/>
-  <updated>2014-10-18T21:30:56+07:00</updated>
-  <id>http://serganbus.github.io//</id>
+  <link href="http://Serganbus.github.io/atom.xml" rel="self"/>
+  <link href="http://Serganbus.github.io/"/>
+  <updated>2014-10-22T13:01:44+07:00</updated>
+  <id>http://Serganbus.github.io/</id>
   <author>
     <name><![CDATA[Sergey Ivanov]]></name>
     <email><![CDATA[sega234@mail.ru]]></email>
@@ -15,11 +15,11 @@
   
   <entry>
     <title type="html"><![CDATA[Кто такой программист?]]></title>
-    <link href="http://serganbus.github.io//blog/2014/10/11/who-is-programmist/"/>
+    <link href="http://Serganbus.github.io/blog/2014/10/11/who-is-programmist/"/>
     <updated>2014-10-11T14:43:09+07:00</updated>
-    <id>http://serganbus.github.io//blog/2014/10/11/who-is-programmist</id>
+    <id>http://Serganbus.github.io/blog/2014/10/11/who-is-programmist</id>
     <content type="html"><![CDATA[<p>Размышляя над тем, какие навыки больше всего нужны программисту, в уме нарисовалась занимательная пирамида по подобию пирамиды Маслоу, а позже была перенесена в компьютерное изображение:
-<img class="center" src="http://serganbus.github.io//images/programmer_pyramide.png" width="806" height="402" title="Пирамида программиста" alt="Пирамида прогарммиста"></p>
+<img class="center" src="http://Serganbus.github.io/images/programmer_pyramide.png" width="806" height="402" title="Пирамида программиста" alt="Пирамида прогарммиста"></p>
 
 <!--more-->
 
@@ -60,30 +60,6 @@
 
 <p>Описанная выше пирамида предполагает, что последующий уровень знаний требует некоторые знания из предыдущего.
 Поэтому, в это представление не вписываются умения владением системами контроля версий, операционными системами и всякого рода методологиями разработки. Это такие вещи, понимание которых делает жизнь проще и краше всегда.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Привет, Octopress!]]></title>
-    <link href="http://serganbus.github.io//blog/2014/10/10/welcome-message/"/>
-    <updated>2014-10-10T00:08:57+07:00</updated>
-    <id>http://serganbus.github.io//blog/2014/10/10/welcome-message</id>
-    <content type="html"><![CDATA[<p>Проверка возможностей платформы Octopress</p>
-
-<!--more-->
-
-
-
-
-<figure class='code'><figcaption><span>Javascript Array Syntax</span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">elementN</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Вставка изображений
-<img class="center" src="http://serganbus.github.io//images/bundle.png" width="677" height="702" title="Изображение консоли" alt="Альтернативный текст"></p>
 ]]></content>
   </entry>
   
