@@ -1,24 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Блог программиста]]></title>
-  <link href="http://Serganbus.github.io/atom.xml" rel="self"/>
-  <link href="http://Serganbus.github.io/"/>
-  <updated>2014-12-24T17:15:41+06:00</updated>
-  <id>http://Serganbus.github.io/</id>
-  <author>
-    <name><![CDATA[Сергей Иванов]]></name>
-    <email><![CDATA[sega234@mail.ru]]></email>
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Продвинутая столбиковая диаграмма с использованием D3.js - Блог программиста</title>
+  <meta name="author" content="Сергей Иванов">
 
   
-  <entry>
-    <title type="html"><![CDATA[Продвинутая столбиковая диаграмма с использованием D3.js]]></title>
-    <link href="http://Serganbus.github.io/blog/2014/12/13/advanced-bar-chart/"/>
-    <updated>2014-12-13T23:49:49+06:00</updated>
-    <id>http://Serganbus.github.io/blog/2014/12/13/advanced-bar-chart</id>
-    <content type="html"><![CDATA[<p>Приветствую!
+  <meta name="description" content="Приветствую!
+Сегодня мы поговорим об обязательных атрибутах продвинутой столбиковой диграммы и о том, как ее реализовывать с использованием &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Serganbus.github.io/blog/2014/12/13/advanced-bar-chart">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="Блог программиста" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-55961107-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Блог программиста</a></h1>
+  
+    <h2>алгоритмы, программы, компьютеры, технологии</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Serganbus.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Блог</a></li>
+  <li><a href="/blog/archives">Архив</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Продвинутая столбиковая диаграмма с использованием D3.js</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-13T23:49:49+06:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:49 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Приветствую!
 Сегодня мы поговорим об обязательных атрибутах продвинутой столбиковой диграммы и о том, как ее реализовывать с использованием библиотеки визуализации данных D3.js. В моем переводе краткого руководства уже затрагивалась тема построения столбиковой диаграммы, однако продвинутой ее назвать язык просто не поворачивается. Кто еще не читал это краткое руководство, оно находится <a href="http://serganbus.github.io/d3tutorials/making_bar_chart.html">здесь</a>.</p>
 
 <p>Допустим, нам необходимо показать, сколько денег мы тратим каждый день в течении месяца. Логично, что для этого дела мы выбрали столбиковую диаграмму. Для начала определимся, что же из себя представляет продвинутая столбиковая диаграмма? Минимальным набором для такой диаграммы является набор столбиков, оси и метки на осях. Хорошо если диаграмма будет иметь легенду(по-русски: подпись). Еще лучше, если диаграмма будет интерактивная. Представьте: наводишь мышью на столбик, а он подсвечивается, да еще и отображается посказка, какое значение отображает этот столбик! И верхом всего будет продвинутая интерактивность. Давайте же выполним задуманное.</p>
@@ -32,7 +111,7 @@
 
 <p>Сначала реализуем диаграмму с минимальным набором. Тут расписывать нечего, так как пользуемся лишь знаниями, полученными при чтении <a href="http://serganbus.github.io/d3tutorials/index.html">переведенного руководства</a>.
 Смотрим на <a href="http://jsfiddle.net/Serganbus/0gbjxqf2/">результат</a>. Сразу выявляется недочет: подписи на горизонтальной оси накладываются друг на другу, тем самым не давая себя прочитать. Если мы проанализируем в web-inspector&#8217;e, из чего состоит одна метка на оси, то увидим следующее:
-<img class="center" src="http://Serganbus.github.io/images/posts/advanced_bar_chart_1.jpg" width="602" height="172" title="Web Inspector" alt="Web Inspector">
+<img class="center" src="/images/posts/advanced_bar_chart_1.jpg" width="602" height="172" title="Web Inspector" alt="Web Inspector">
 То есть, метка состоит из линии и подписи. И подпись у нас никак не корректируется в зависимости от ширины столбика. Выглядит ужасно и очень не информативно. Чтобы это исправить, нам нужно сделать так, чтобы подпись для каждого столбика корректировалась в зависимости от ширины этого столбика.  Концептуально можно выделить такую последовательность действия для решения этой задачи: <br/>
 1. Выбираем все метки на горизонтальной оси методом <a href="https://github.com/mbostock/d3/wiki/Selections#d3_selectAll">d3.selectAll()</a>; <br/>
 2. Поворачиваем подпись метки на такой угол, чтобы ее ширина была соизмерима с шириной столбика; <br/>
@@ -224,70 +303,173 @@
 
 <p>Таким образом, наша продвинутая стобликовая диаграмма готова!
 <a href="http://jsfiddle.net/Serganbus/0gbjxqf2/5/">Конечный результат</a>.</p>
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[D3. Краткое руководство]]></title>
-    <link href="http://Serganbus.github.io/blog/2014/10/23/d3-tutorials-translated/"/>
-    <updated>2014-10-23T17:04:39+06:00</updated>
-    <id>http://Serganbus.github.io/blog/2014/10/23/d3-tutorials-translated</id>
-    <content type="html"><![CDATA[<p>Представляю вашему вниманию <a href="http://serganbus.github.io/d3tutorials/index.html">перевод</a> книги Скотта Мюррея &ldquo;D3 Tutorials&rdquo;. Книга представляет собой быстрый вводный курс в использование библиотеки визуализации D3. Если вы еще не слышали о ней и не знаете ее возможностей, предлагаю вам посетить <a href="http://d3js.org/">официальный сайт библиотеки</a> и ознакомиться с впечатляющими <a href="https://github.com/mbostock/d3/wiki/Gallery">примерами использования</a>.</p>
 
-<p>Так вот, книга представляет собой настолько последовательное описание, что понять его сможет даже тот, кто никогда не программировал. Вообще, книга и рассчитана на таких людей, поэтому если вы знаете язык JavaScript и имеете представление о HTML5 и CSS - прочтение и погружение в суть разработки визуализаций с использованием D3 займет у вас, наверное, несколько часов!</p>
+<span class="byline author vcard">Опубликовал <span class="fn">Сергей Иванов</span></span>
 
-<p>Наслаждаемся <a href="http://serganbus.github.io/d3tutorials/index.html">переводом</a>!</p>
-]]></content>
-  </entry>
+      
+
+
+
+
+<time class='entry-date' datetime='2014-12-13T23:49:49+06:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:49 pm</span></time>
+      
+
+<span class="categories">
   
-  <entry>
-    <title type="html"><![CDATA[Кто такой программист?]]></title>
-    <link href="http://Serganbus.github.io/blog/2014/10/11/who-is-programmist/"/>
-    <updated>2014-10-11T13:43:09+06:00</updated>
-    <id>http://Serganbus.github.io/blog/2014/10/11/who-is-programmist</id>
-    <content type="html"><![CDATA[<p>Размышляя над тем, какие навыки больше всего нужны программисту, в уме нарисовалась занимательная пирамида по подобию пирамиды Маслоу, а позже была перенесена в компьютерное изображение:
-<img class="center" src="http://Serganbus.github.io/images/posts/programmer_pyramide.png" width="806" height="402" title="Пирамида программиста" alt="Пирамида программиста"></p>
-
-<!--more-->
-
-
-<p>Рассмотрим каждый слой подробнее:</p>
-
-<h4>Логика</h4>
-
-<p>Конечно же, самое важное, чем должен обладать программист – это логика. Умение правильно мыслить, выявлять взаимосвязи между явлениями безусловно должны быть атрибутами каждого не столько программиста, сколько толкового технаря.</p>
-
-<h4>Математика</h4>
-
-<p>Если человек обладает логическим мышлением, значит знание математики лишь вопрос времени.
-Конечно же, разным специализациям необходимы различные разделы математики, однако, знание математического аппарата на уровне хотя бы школьного курса критически необходимо.</p>
-
-<h4>Формализация</h4>
-
-<p>Перенести любые действия на язык точных наук - дано не каждому. Именно здесь без знания математики, логики, и, возможно, других наук не обойтись. Умение пользоваться декомпозицией сложных задач на более мелкие подзадачи категорически приветствуется.</p>
-
-<h4>Алгоритмы и структуры данных</h4>
-
-<p>Фактически, алгоритмы и структуры данных необходимы для кодирования формализованной модели процесса/объекта/системы.
-Строить алгоритмы еще учат в школьном курсе информатики. Там дают понятие термина &ldquo;алгоритм&rdquo;, учат их составлять, даже строят блок-схемы по ним. Но какая это потрясающая вещь, кто-нибудь для себя вынес? А ведь мы с ними сталкиваемся каждый день! Да что уж говорить, нашу жизнь можно описать простым алгоритмом, приводящим неизменно к одному и тому же результату. Рождение-> детство-> юношество-> молодость-> зрелость-> старость-> смерть. Это, наверное, самый надежный алгоритм во вселенной!</p>
-
-<h4>Языки программирования</h4>
-
-<p>Все основные алгоритмы и структуры данных доступны практически(а может и на любом) языке программирования. Здесь уместно сравнение с человеческими языками: их существует огромное множество, однако на каком бы из них ни говорил человек, он сможет выразить все, что угодно! Таким образом, язык программирования является инструментом выражения формализованной модели или алгоритма, следствием выполнения которого является работающая программа.</p>
-
-<h4>Шаблоны проектирования</h4>
-
-<p>Сюда также я хотел бы отнести и различные архитектуры приложений. На каком бы языке вы ни писали, для каждого существует набор типовых решений конкретных задач. Они существенно упрощают жизнь.</p>
-
-<h4>Технологии</h4>
-
-<p>Я расположил это понятие на верхушке своего представления о программировании, потому что технологии являются синтезом всего вышеперечисленного. Например, при раскрытии темы веб-технологии оказывается, что это собирательное понятие использования определенного набора языков программирования(скажем, PHP, Java, JavaScript и т.д.), архитектур приложений(например сервис-ориентированные приложения, клиент-серверные приложения) и определенного набора шаблонов проектирования(допустим, MVC, MVVM).</p>
-
-<h4>И это все?</h4>
-
-<p>Описанная выше пирамида предполагает, что последующий уровень знаний требует некоторые знания из предыдущего.
-Поэтому, в это представление не вписываются умения владением системами контроля версий, операционными системами и всякого рода методологиями разработки. Это такие вещи, понимание которых делает жизнь проще и краше всегда.</p>
-]]></content>
-  </entry>
+    <a class='category' href='/blog/categories/d3js/'>d3js</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/visualization/'>visualization</a>
   
-</feed>
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://Serganbus.github.io/blog/2014/12/13/advanced-bar-chart/" data-via="" data-counturl="http://Serganbus.github.io/blog/2014/12/13/advanced-bar-chart/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/10/23/d3-tutorials-translated/" title="Previous Post: D3. Краткое руководство">&laquo; D3. Краткое руководство</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Комментарии</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Включите, пожалуйста JavaScript, чтобы видеть <a href="http://disqus.com/?ref_noscript">комментарии в сервисе Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Недавние записи</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/13/advanced-bar-chart/">Продвинутая столбиковая диаграмма с использованием D3.js</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/23/d3-tutorials-translated/">D3. Краткое руководство</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/10/11/who-is-programmist/">Кто такой программист?</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Репозитории GitHub</h1>
+  <ul id="gh_repos">
+    <li class="loading">Обновляется&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/Serganbus">@Serganbus</a> на GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'Serganbus',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Сергей Иванов -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'serganbus';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://Serganbus.github.io/blog/2014/12/13/advanced-bar-chart/';
+        var disqus_url = 'http://Serganbus.github.io/blog/2014/12/13/advanced-bar-chart/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

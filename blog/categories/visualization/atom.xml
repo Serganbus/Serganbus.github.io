@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Javascript | Блог программиста]]></title>
-  <link href="http://Serganbus.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Visualization | Блог программиста]]></title>
+  <link href="http://Serganbus.github.io/blog/categories/visualization/atom.xml" rel="self"/>
   <link href="http://Serganbus.github.io/"/>
   <updated>2014-12-24T17:15:41+06:00</updated>
   <id>http://Serganbus.github.io/</id>
@@ -206,19 +206,6 @@
 </span><span class='line'>    });</span></code></pre></td></tr></table></div></figure>
 Таким образом, наша продвинутая стобликовая диаграмма готова!
 <a href="http://jsfiddle.net/Serganbus/0gbjxqf2/5/">Конечный результат</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[D3. Краткое руководство]]></title>
-    <link href="http://Serganbus.github.io/blog/2014/10/23/d3-tutorials-translated/"/>
-    <updated>2014-10-23T17:04:39+06:00</updated>
-    <id>http://Serganbus.github.io/blog/2014/10/23/d3-tutorials-translated</id>
-    <content type="html"><![CDATA[<p>Представляю вашему вниманию <a href="http://serganbus.github.io/d3tutorials/index.html">перевод</a> книги Скотта Мюррея &ldquo;D3 Tutorials&rdquo;. Книга представляет собой быстрый вводный курс в использование библиотеки визуализации D3. Если вы еще не слышали о ней и не знаете ее возможностей, предлагаю вам посетить <a href="http://d3js.org/">официальный сайт библиотеки</a> и ознакомиться с впечатляющими <a href="https://github.com/mbostock/d3/wiki/Gallery">примерами использования</a>.</p>
-
-<p>Так вот, книга представляет собой настолько последовательное описание, что понять его сможет даже тот, кто никогда не программировал. Вообще, книга и рассчитана на таких людей, поэтому если вы знаете язык JavaScript и имеете представление о HTML5 и CSS - прочтение и погружение в суть разработки визуализаций с использованием D3 займет у вас, наверное, несколько часов!</p>
-
-<p>Наслаждаемся <a href="http://serganbus.github.io/d3tutorials/index.html">переводом</a>!</p>
 ]]></content>
   </entry>
   
