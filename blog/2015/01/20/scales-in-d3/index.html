@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Блог программиста</title>
+  <title>Масштабирующие функции в D3 - Блог программиста</title>
   <meta name="author" content="Сергей Иванов">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://Serganbus.github.io">
+  <link rel="canonical" href="http://Serganbus.github.io/blog/2015/01/20/scales-in-d3">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Блог программиста" type="application/atom+xml">
@@ -75,15 +75,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/01/20/scales-in-d3/">Масштабирующие функции в D3</a></h1>
+      <h1 class="entry-title">Масштабирующие функции в D3</h1>
     
     
       <p class="meta">
@@ -99,131 +96,81 @@
   </header>
 
 
-  <div class="entry-content"><p>Приветствую! <br/>
+<div class="entry-content"><p>Приветствую! <br/>
 В этом цикле статей я попытаюсь доступно объяснить, что такое масштабирование применительно к визуализации данных, зачем оно нужно, и как оно представлено в библиотеке D3. Надеюсь, будет познавательно.</p>
 
+<!-- more -->
+
+
+<p>При разработке визуализации данных всегда имеется одна и та же ключевая задача, которую вам приходится решать снова и снова: сопоставление входным данным  визуальных образов. Например, необходимо сопоставить недавно купленный смартфон за 18000р с столбиком высотой 240 пикселей, а также ваш последний поход в кафе, который обошелся в 1453р со столбиком высотой, скажем 50 пикселей. В каком-то смысле, это все, что представляет из себя визуализация данных - сопоставление входным данным каких-либо характеристик визуальных образов так, чтобы при взгляде на визуализацию сразу было ясно о чем идет речь.</p>
+
+<p>В первую очередь следует сказать, что в D3 функции масштабирования являются одновременно и объектами. Как объект, они имеют собственные методы, которые необходимы для настройки функций масштабирования. <br/>
+Еще необходимо упомянуть, что в D3 использование функций масштабирования для построения визуализаций не является обязательным. Тем не менее, использование их  может невероятно упростить процесс преобразования входного набора данных в визуальные образы.</p>
+
+<p>Но ближе к делу. <br/>
+Как мы знаем из курса школьной математики, функция — это правило, по которому каждому элементу одного множества (называемого областью определения) ставится в соответствие некоторый элемент другого множества (называемого областью значений), то есть:
+<img class="center" src="/images/posts/function.png" width="311" height="209" title="Функция" alt="Функция">
+Множество A - область определения; множество B - область значений. <br/>
+Так вот: в документации к D3 масштабирующие функции разелены на три вида: <br/>
+1. Функции, область определения которых представлена всякого рода числовыми последовательностями. Буду называть их количественными функциями масштабирования(в англ. документации quantitative); <br/>
+2. Функции, область определения которых представлена разными множествами. Буду называть их порядковыми функциями масштабирования(в англ. документации ordinal); <br/>
+3. Функции, область определения которых представлена датами, то есть временные функции масштабирования. <br/>
+Так как описание каждого вида масштабирующей функции само по себе включает много текста, пояснений и изображений, я решил для каждого вида функции масштабирования выделить отдельную запись. По мере выкладывания новой записи, раскрывающей использование той или иной функции масштабирования, в этом посте будут обновляться ссылки.</p>
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/01/20/scales-in-d3/">Читать далее &rarr;</a>
-    </footer>
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/13/advanced-bar-chart/">Продвинутая столбиковая диаграмма с использованием D3.js</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-13T23:49:49+06:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>11:49 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Приветствую!
-Сегодня мы поговорим об обязательных атрибутах продвинутой столбиковой диграммы и о том, как ее реализовывать с использованием библиотеки визуализации данных D3.js. В моем переводе краткого руководства уже затрагивалась тема построения столбиковой диаграммы, однако продвинутой ее назвать язык просто не поворачивается. Кто еще не читал это краткое руководство, оно находится <a href="http://serganbus.github.io/d3tutorials/making_bar_chart.html">здесь</a>.</p>
-
-<p>Допустим, нам необходимо показать, сколько денег мы тратим каждый день в течении месяца. Логично, что для этого дела мы выбрали столбиковую диаграмму. Для начала определимся, что же из себя представляет продвинутая столбиковая диаграмма? Минимальным набором для такой диаграммы является набор столбиков, оси и метки на осях. Хорошо если диаграмма будет иметь легенду(по-русски: подпись). Еще лучше, если диаграмма будет интерактивная. Представьте: наводишь мышью на столбик, а он подсвечивается, да еще и отображается посказка, какое значение отображает этот столбик! И верхом всего будет продвинутая интерактивность. Давайте же выполним задуманное.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/13/advanced-bar-chart/">Читать далее &rarr;</a>
-    </footer>
   
 
+<span class="byline author vcard">Опубликовал <span class="fn">Сергей Иванов</span></span>
 
-    </article>
-  
-  
-    <article>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/10/23/d3-tutorials-translated/">D3. Краткое руководство</a></h1>
-    
-    
-      <p class="meta">
-        
 
 
 
 
-<time class='entry-date' datetime='2014-10-23T17:04:39+06:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>23</span><span class='date-suffix'>rd</span>, <span class='date-year'>2014</span></span> <span class='time'>5:04 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Представляю вашему вниманию <a href="http://serganbus.github.io/d3tutorials/index.html">перевод</a> книги Скотта Мюррея &ldquo;D3 Tutorials&rdquo;. Книга представляет собой быстрый вводный курс в использование библиотеки визуализации D3. Если вы еще не слышали о ней и не знаете ее возможностей, предлагаю вам посетить <a href="http://d3js.org/">официальный сайт библиотеки</a> и ознакомиться с впечатляющими <a href="https://github.com/mbostock/d3/wiki/Gallery">примерами использования</a>.</p>
-
-<p>Так вот, книга представляет собой настолько последовательное описание, что понять его сможет даже тот, кто никогда не программировал. Вообще, книга и рассчитана на таких людей, поэтому если вы знаете язык JavaScript и имеете представление о HTML5 и CSS - прочтение и погружение в суть разработки визуализаций с использованием D3 займет у вас, наверное, несколько часов!</p>
-
-<p>Наслаждаемся <a href="http://serganbus.github.io/d3tutorials/index.html">переводом</a>!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
+<time class='entry-date' datetime='2015-01-20T23:28:30+06:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:28 pm</span></time>
       
-  <header>
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/d3js/'>d3js</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/visualization/'>visualization</a>
+  
+</span>
+
+
+    </p>
     
-      <h1 class="entry-title"><a href="/blog/2014/10/11/who-is-programmist/">Кто такой программист?</a></h1>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://Serganbus.github.io/blog/2015/01/20/scales-in-d3/" data-via="" data-counturl="http://Serganbus.github.io/blog/2015/01/20/scales-in-d3/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
     
-    
-      <p class="meta">
-        
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2014/12/13/advanced-bar-chart/" title="Previous Post: Продвинутая столбиковая диаграмма с использованием D3.js">&laquo; Продвинутая столбиковая диаграмма с использованием D3.js</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-<time class='entry-date' datetime='2014-10-11T13:43:09+06:00'><span class='date'><span class='date-month'>Oct</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>1:43 pm</span></time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Размышляя над тем, какие навыки больше всего нужны программисту, в уме нарисовалась занимательная пирамида по подобию пирамиды Маслоу, а позже была перенесена в компьютерное изображение:
-<img class="center" src="/images/posts/programmer_pyramide.png" width="806" height="402" title="Пирамида программиста" alt="Пирамида программиста"></p>
+  <section>
+    <h1>Комментарии</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Включите, пожалуйста JavaScript, чтобы видеть <a href="http://disqus.com/?ref_noscript">комментарии в сервисе Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/10/11/who-is-programmist/">Читать далее &rarr;</a>
-    </footer>
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Архив записей</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -285,6 +232,7 @@
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -299,7 +247,10 @@
       var disqus_shortname = 'serganbus';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://Serganbus.github.io/blog/2015/01/20/scales-in-d3/';
+        var disqus_url = 'http://Serganbus.github.io/blog/2015/01/20/scales-in-d3/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
