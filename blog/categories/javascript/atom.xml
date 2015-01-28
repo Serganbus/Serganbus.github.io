@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | Блог программиста]]></title>
   <link href="http://Serganbus.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://Serganbus.github.io/"/>
-  <updated>2015-01-24T15:20:15+06:00</updated>
+  <updated>2015-01-28T20:23:55+06:00</updated>
   <id>http://Serganbus.github.io/</id>
   <author>
     <name><![CDATA[Сергей Иванов]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Материалы по D3js]]></title>
+    <link href="http://Serganbus.github.io/blog/2015/01/28/d3-materials/"/>
+    <updated>2015-01-28T20:03:05+06:00</updated>
+    <id>http://Serganbus.github.io/blog/2015/01/28/d3-materials</id>
+    <content type="html"><![CDATA[<p>В данном посте собраны материалы по изучению библиотеки визуализации D3, актуальные на дату публикации. Список материалов приведен как на русском, так и на английском языках.</p>
+
+<!--more-->
+
+
+<h3>Материалы на русском языке</h3>
+
+<p>На русском языке информации по javascript библиотеке визуализации данных D3 крайне мало. А структурированной и полной информации нет вообще. И, тем не менее, можно изучить небольшое <a href="http://serganbus.github.io/d3tutorials/index.html">руководство</a>, которое может дать самый минимум. Также, если хорошо порыться, можно отыскать пару-тройку статей-введений в D3. На этом, пожалуй, информация по D3 для человека, понимающего лишь русский язык, заканчивается.</p>
+
+<h3>Материалы на английском языке</h3>
+
+<h4>От автора библиотеки</h4>
+
+<p>Для людей, понимающих английский язык, информации для ознакомления куда больше. <br/>
+Безусловно, лучшим источником информации по любому инструменту разработки или библиотеке является официальная документация. D3, в этом случае, не исключение. Официальная документация находится на <a href="https://github.com/mbostock/d3/wiki/API-Reference">здесь</a>. <br/>
+Также автор этой библиотеки делится тонкостями использования D3 в своем <a href="http://bost.ocks.org/mike/">блоге</a>. <br/>
+На <a href="http://d3js.org/">официальном сайте</a> библиотеки собрано большое количество <a href="https://github.com/mbostock/d3/wiki/Gallery">примеров</a> ее использования для разного рода визуализаций. Исходный код к ним прилагается. Очень познавательно.</p>
+
+<h4>Сторонние сайты и блоги</h4>
+
+<p><a href="http://www.d3noob.org">http://www.d3noob.org</a> - сайт-набор статей по D3js. Этакий сборник рецептов(советы и рекомендации) использования библиотеки; <br/>
+<a href="http://alignedleft.com/tutorials/d3">http://alignedleft.com/tutorials/d3</a> - Краткое руководство-введение. Изучить можно за несколько часов. По окончании чтения достаточно знаний, чтобы самому экспериментировать. Автор Скотт Мюррей; <br/>
+<a href="https://www.dashingd3js.com/table-of-contents">https://www.dashingd3js.com/table-of-contents</a> - Более объемлющее и подробное руководство-введение; <br/>
+<a href="http://courses.cs.washington.edu/courses/cse512/14wi/d3-tutorial/fundamental.html#/">http://courses.cs.washington.edu/courses/cse512/14wi/d3-tutorial/fundamental.html#/</a> - Еще одно краткое руковоство-введение от одного из ведущих университетов США.</p>
+
+<h4>Обучающие видео</h4>
+
+<p><a href="http://www.youtube.com/playlist?list=PL6il2r9i3BqH9PmbOf5wA5E1wOG3FT22p">http://www.youtube.com/playlist?list=PL6il2r9i3BqH9PmbOf5wA5E1wOG3FT22p</a>
+<a href="http://www.youtube.com/playlist?list=PLHfLBrRzKS4q4cU4ewZ2Q1pnJZ2WiKAPq">http://www.youtube.com/playlist?list=PLHfLBrRzKS4q4cU4ewZ2Q1pnJZ2WiKAPq</a>
+<a href="https://egghead.io/technologies/d3?page=1">https://egghead.io/technologies/d3?page=1</a></p>
+
+<h4>Книги</h4>
+
+<p><a href="http://chimera.labs.oreilly.com/books/1230000000345/">Interactive Data Visualization for the Web</a>. Автор Скотт Мюррей. Его краткое руководство-введение представляет собой выжимку из этой книги. <br/>
+<a href="https://leanpub.com/D3-Tips-and-Tricks">D3 Tips and Tricks</a>. Автор Малкольм Маклин. Опять таки сборник рецептов, советов и рекомендаций, но уже в книжном варианте. <br/>
+<a href="http://www.amazon.com/Data-Visualization-D3-js-Cookbook-Nick/dp/178216216X">Data Visualization with D3.js Cookbook</a>. Автор Nick Qi Zhu. Книга обладает наиболее качественно структурированным материалом из всех представленных здесь(по мнению автора статьи). <br/>
+Отмечу также, что все книги, которые здесь представлены, доступны бесплатно в pdf формате, однако, их придется поискать.</p>
+
+<p>Если вы хотите поделиться ссылками на свои материалы, пожалуйста, пишите в комментариях.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Масштабирующие функции в D3]]></title>
